@@ -8,8 +8,6 @@
 -- =============================================================================================================
 
 CREATE DATABASE IF NOT EXISTS `COMUN`;
-CREATE DATABASE IF NOT EXISTS `Administracion`;
-CREATE DATABASE IF NOT EXISTS `Empresa0000`;
 
 -- =============================================================================================================
 USE `COMUN`;
@@ -17,11 +15,14 @@ USE `COMUN`;
 
 -- DROP TABLE `COMUN`.`Tipovias`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Tipovias` (
-    id_tipovia INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_tipovia INT NOT NULL AUTO_INCREMENT,
     Tipo VARCHAR(50) NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Almacena los tipos de vía posibles (Calle, Avenida, Plaza, Carretera, etc.)";
+ALTER TABLE `COMUN`.`Tipovias`
+    ADD CONSTRAINT pk_id_tipovia PRIMARY KEY (id_tipovia);
+
 
 -- DROP TABLE `COMUN`.`IVA`
 CREATE TABLE IF NOT EXISTS `COMUN`.`IVA` (
@@ -78,26 +79,3 @@ COMMENT="Almacena todas las localidades oficialmente reconocidas extraídas del 
 ALTER TABLE `COMUN`.`Localidades`
     ADD CONSTRAINT fk_provincia FOREIGN KEY (id_provincia) REFERENCES `COMUN`.`Provincias` (id_provincia);
 
--- =============================================================================================================
-USE `Administracion`;
--- =============================================================================================================
-
--- DROP TABLE `Administracion`.`Contratos`
-CREATE TABLE IF NOT EXISTS `Administracion`.`Contratos` (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Nombre_social VARCHAR(100) NOT NULL,
-    NIF VARCHAR(9) NOT NULL,
-    Email VARCHAR(50) NOT NULL,
-    Telefono VARCHAR(9) NOT NULL,
-    fk_tipovia INT NOT NULL,
-    Dir_calle VARCHAR(100) NOT NULL,
-    Dir_numero VARCHAR(5),
-    Dir_otros VARCHAR(50),
-    fk_localidad INT NOT NULL,
-    fecha_alta DATETIME NOT NULL,
-    fecha_cambio DATETIME,
-    fk_formasocial INT NOT NULL,
-    Activo BOOLEAN NOT NULL
-)
-ENGINE=InnoDB
-COMMENT="Tabla común en la que se almacenan los datos de todas los contratos con acceso a la aplicación";

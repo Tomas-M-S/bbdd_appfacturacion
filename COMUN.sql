@@ -26,50 +26,60 @@ ALTER TABLE `COMUN`.`Tipovias`
 
 -- DROP TABLE `COMUN`.`IVA`
 CREATE TABLE IF NOT EXISTS `COMUN`.`IVA` (
-    id_tipovia INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_iva INT NOT NULL AUTO_INCREMENT,
     Tipo_iva INT NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Almacena los diferentes tipos impositivos del IVA";
+ALTER TABLE `COMUN`.`IVA`
+    ADD CONSTRAINT pk_id_iva PRIMARY KEY (id_iva);
 
 -- DROP TABLE `COMUN`.`IVA`
 CREATE TABLE IF NOT EXISTS `COMUN`.`IGIC` (
-    id_tipoigic INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_igic INT NOT NULL AUTO_INCREMENT,
     Tipo_igic INT NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Almacena los diferentes tipos impositivos del IGIC (IVA Canario)";
+ALTER TABLE `COMUN`.`IGIC`
+    ADD CONSTRAINT pk_id_igic PRIMARY KEY (id_igic);
 
 -- DROP TABLE `COMUN`.`Sociedades`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Sociedades` (
-    id_formasocial INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_formasocial INT NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(50) NOT NULL,
     Abreviatura VARCHAR(10) NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Almacena todos los tipos posibles de formas sociales (Sociedad Limitada, Sociedad Anonima, Persona Física, etc.)";
+ALTER TABLE `COMUN`.`Sociedades`
+    ADD CONSTRAINT pk_id_formasocial PRIMARY KEY (id_formasocial);
 
 -- DROP TABLE `COMUN`.`Autonomias`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
-    id_autonomia INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_autonomia INT NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(50) NOT NULL,
     Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
 COMMENT="Almacena las comunidades autónomas (Cantabria, Andalucía, etc.)";
+ALTER TABLE `COMUN`.`Provincias`
+    ADD CONSTRAINT pk_id_autonomia PRIMARY KEY (id_autonomia);
 
 -- DROP TABLE `COMUN`.`Provincias`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
-   id_provincia INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   id_provincia INT NOT NULL AUTO_INCREMENT,
    Nombre VARCHAR(50) NOT NULL,
    Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
 COMMENT="Almacena las provincias de España (Albacete, oria, Teruel, Gerona, etc.)";
+ALTER TABLE `COMUN`.`Provincias`
+    ADD CONSTRAINT pk_id_provincia PRIMARY KEY (id_provincia);
 
 -- DROP TABLE `COMUN`.`Localidades`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Localidades` (
-    id_tipovia INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_localidad INT NOT NULL AUTO_INCREMENT,
     fk_provincia INT NOT NULL,
     Nombre VARCHAR(50) NOT NULL,
     Nombre_local VARCHAR(50)
@@ -77,5 +87,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Localidades` (
 ENGINE=InnoDB
 COMMENT="Almacena todas las localidades oficialmente reconocidas extraídas del INE";
 ALTER TABLE `COMUN`.`Localidades`
-    ADD CONSTRAINT fk_provincia FOREIGN KEY (id_provincia) REFERENCES `COMUN`.`Provincias` (id_provincia);
+    ADD CONSTRAINT pk_id_localidad PRIMARY KEY (id_localidad);
+ALTER TABLE `COMUN`.`Localidades`
+    ADD CONSTRAINT fk_provincia FOREIGN KEY (id_provincia)
+    REFERENCES `COMUN`.`Provincias` (id_provincia);
 

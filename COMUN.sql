@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Sociedades` (
     Abreviatura VARCHAR(10) NOT NULL
 )
 ENGINE=InnoDB
-COMMENT="Almacena todos los tipos posibles de formas sociales (Sociedad Limitada, Sociedad Anonima, Persona Física, etc.)";
+COMMENT="Almacena los tipos posibles de formas sociales (Sociedad Limitada, Sociedad Anonima, Persona Física, etc.)";
 ALTER TABLE `COMUN`.`Sociedades`
     ADD CONSTRAINT pk_id_formasocial PRIMARY KEY (id_formasocial);
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
    Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
-COMMENT="Almacena las provincias de España (Albacete, oria, Teruel, Gerona, etc.)";
+COMMENT="Almacena las provincias de España (Albacete, Soria, Teruel, Gerona, etc.)";
 ALTER TABLE `COMUN`.`Provincias`
     ADD CONSTRAINT pk_id_provincia PRIMARY KEY (id_provincia);
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Localidades` (
     Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
-COMMENT="Almacena todas las localidades oficialmente reconocidas extraídas del INE";
+COMMENT="Almacena las localidades oficialmente reconocidas extraídas del INE";
 ALTER TABLE `COMUN`.`Localidades`
     ADD CONSTRAINT pk_id_localidad PRIMARY KEY (id_localidad);
 ALTER TABLE `COMUN`.`Localidades`

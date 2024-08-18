@@ -34,6 +34,7 @@ COMMENT="Almacena los diferentes tipos impositivos del IVA";
 ALTER TABLE `COMUN`.`IVA`
     ADD CONSTRAINT pk_id_iva PRIMARY KEY (id_iva);
 
+
 -- DROP TABLE `COMUN`.`IVA`
 CREATE TABLE IF NOT EXISTS `COMUN`.`IGIC` (
     id_igic INT NOT NULL AUTO_INCREMENT,
@@ -43,6 +44,7 @@ ENGINE=InnoDB
 COMMENT="Almacena los diferentes tipos impositivos del IGIC (IVA Canario)";
 ALTER TABLE `COMUN`.`IGIC`
     ADD CONSTRAINT pk_id_igic PRIMARY KEY (id_igic);
+
 
 -- DROP TABLE `COMUN`.`Sociedades`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Sociedades` (
@@ -55,6 +57,7 @@ COMMENT="Almacena los tipos posibles de formas sociales (Sociedad Limitada, Soci
 ALTER TABLE `COMUN`.`Sociedades`
     ADD CONSTRAINT pk_id_formasocial PRIMARY KEY (id_formasocial);
 
+
 -- DROP TABLE `COMUN`.`Autonomias`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Autonomias` (
     id_autonomia INT NOT NULL AUTO_INCREMENT,
@@ -63,8 +66,9 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Autonomias` (
 )
 ENGINE=InnoDB
 COMMENT="Almacena las comunidades autónomas (Cantabria, Andalucía, etc.)";
-ALTER TABLE `COMUN`.`Provincias`
+ALTER TABLE `COMUN`.`Autonomias`
     ADD CONSTRAINT pk_id_autonomia PRIMARY KEY (id_autonomia);
+
 
 -- DROP TABLE `COMUN`.`Provincias`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
@@ -76,6 +80,7 @@ ENGINE=InnoDB
 COMMENT="Almacena las provincias de España (Albacete, Soria, Teruel, Gerona, etc.)";
 ALTER TABLE `COMUN`.`Provincias`
     ADD CONSTRAINT pk_id_provincia PRIMARY KEY (id_provincia);
+
 
 -- DROP TABLE `COMUN`.`Localidades`
 CREATE TABLE IF NOT EXISTS `COMUN`.`Localidades` (
@@ -92,3 +97,14 @@ ALTER TABLE `COMUN`.`Localidades`
     ADD CONSTRAINT fk_provincia FOREIGN KEY (fk_provincia)
     REFERENCES `COMUN`.`Provincias` (id_provincia);
 
+
+-- DROP TABLE `COMUN`.`Pagos`
+CREATE TABLE IF NOT EXISTS `COMUN`.`Modopago` (
+    id_modopago INT NOT NULL AUTO_INCREMENT,
+    Texto INT NOT NULL,
+    Comentarios VARCHAR(500)
+)
+ENGINE=InnoDB
+COMMENT="Posibles modos de pago";
+ALTER TABLE `COMUN`.`Modopago`
+    ADD CONSTRAINT pk_id_modopago PRIMARY KEY (id_modopago);

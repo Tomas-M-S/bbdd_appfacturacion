@@ -21,38 +21,46 @@ INSERT IGNORE INTO `COMUN`.`IGIC` (id_tipoigic, Tipo_igic) VALUES (6,0.2);
 INSERT IGNORE INTO `COMUN`.`IGIC` (id_tipoigic, Tipo_igic) VALUES (7,0.35);
 
 
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Persona Física","P.F.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Anónima","S.A.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Limitada","S.L.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Limitada Laboral","S.L.L.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Cooperativa","S.Coop.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Limitada Unipersonal","S.L.U.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Civil","S.C.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Comanditaria","S.Com.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Comanditaria por Acciones","S. Com. p. A.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Agraria de Transformación","S.A.T.");
-INSERT IGNORE INTO `COMUN`.`sociedades` (Nombre, Abreviatura) VALUES ("Sociedad Irregular","S.I.");
+INSERT IGNORE INTO `COMUN`.`Modopado` (id_modopago, Texto) VALUES (1,"Efectivo");
+INSERT IGNORE INTO `COMUN`.`Modopado` (id_modopago, Texto) VALUES (2,"Paypal");
+INSERT IGNORE INTO `COMUN`.`Modopado` (id_modopago, Texto) VALUES (3,"Tarjeta");
+INSERT IGNORE INTO `COMUN`.`Modopado` (id_modopago, Texto) VALUES (4,"Ingreso bancario");
+INSERT IGNORE INTO `COMUN`.`Modopado` (id_modopago, Texto) VALUES (5,"Traspaso");
 
 
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (1,"Andalucía");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (2,"Aragón");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (3,"Asturias, Principado de");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (4,"Balears, Illes");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (5,"Canarias");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (6,"Cantabria");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (7,"Castilla y León");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (8,"Castilla-La Mancha");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (9,"Cataluña");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (10,"Comunitat Valenciana");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (11,"Extremadura");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (12,"Galicia");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (13,"Madrid, Comunidad de");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (14,"Murcia, Región de");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (15,"Navarra, Comunidad Foral de");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (16,"País Vasco");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (17,"Rioja, La");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (18,"Ceuta");
-INSERT IGNORE INTO `COMUN`.`autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (19,"Melilla");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (1,"Comunidad de Bienes","C.B.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (2,"Persona Física","P.F.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (3,"Sociedad Anónima","S.A.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (4,"Sociedad Limitada","S.L.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (5,"Sociedad Limitada Laboral","S.L.L.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (6,"Sociedad Cooperativa","S.Coop.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (7,"Sociedad Limitada Unipersonal","S.L.U.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (8,"Sociedad Civil","S.C.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (9,"Sociedad Comanditaria","S.Com.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (10,"Sociedad Comanditaria por Acciones","S. Com. p. A.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (11,"Sociedad Agraria de Transformación","S.A.T.");
+INSERT IGNORE INTO `COMUN`.`Sociedades` (id_formasocial, Nombre, Abreviatura) VALUES (12,"Sociedad Irregular","S.I.");
+
+
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (1,"Andalucía");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (2,"Aragón");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (3,"Asturias, Principado de");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (4,"Balears, Illes");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (5,"Canarias");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (6,"Cantabria");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (7,"Castilla y León");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (8,"Castilla-La Mancha");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (9,"Cataluña");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (10,"Comunitat Valenciana");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (11,"Extremadura");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (12,"Galicia");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (13,"Madrid, Comunidad de");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (14,"Murcia, Región de");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (15,"Navarra, Comunidad Foral de");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (16,"País Vasco");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (17,"Rioja, La");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (18,"Ceuta");
+INSERT IGNORE INTO `COMUN`.`Autonomias` (id_autonomia, Nombre, Nombre_local) VALUES (19,"Melilla");
 
 
 INSERT IGNORE INTO `COMUN`.`provincias` (id_provincia, fk_autonomia, Nombre, Nombre_local) VALUES (4,1,"Almería");

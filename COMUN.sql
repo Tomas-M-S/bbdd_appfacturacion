@@ -3,7 +3,7 @@
 -- =============================================================================================================
 -- MySQL / MariaDB
 -- BBDD COMUN -> Tablas comunes
--- BBDD Administración -> Únicamente para gestión del servicio de los diferentes contratos
+-- BBDD Administracion -> Únicamente para gestión del servicio de los diferentes contratos
 -- BBDD Empresa0000 -> Base de datos de la aplicación en si misma
 -- =============================================================================================================
 
@@ -56,7 +56,7 @@ ALTER TABLE `COMUN`.`Sociedades`
     ADD CONSTRAINT pk_id_formasocial PRIMARY KEY (id_formasocial);
 
 -- DROP TABLE `COMUN`.`Autonomias`
-CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
+CREATE TABLE IF NOT EXISTS `COMUN`.`Autonomias` (
     id_autonomia INT NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(50) NOT NULL,
     Nombre_local VARCHAR(50)
@@ -89,6 +89,6 @@ COMMENT="Almacena las localidades oficialmente reconocidas extraídas del INE";
 ALTER TABLE `COMUN`.`Localidades`
     ADD CONSTRAINT pk_id_localidad PRIMARY KEY (id_localidad);
 ALTER TABLE `COMUN`.`Localidades`
-    ADD CONSTRAINT fk_provincia FOREIGN KEY (id_provincia)
+    ADD CONSTRAINT fk_provincia FOREIGN KEY (fk_provincia)
     REFERENCES `COMUN`.`Provincias` (id_provincia);
 

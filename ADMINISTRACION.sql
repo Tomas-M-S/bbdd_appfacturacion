@@ -3,7 +3,7 @@
 -- =============================================================================================================
 -- MySQL / MariaDB
 -- BBDD COMUN -> Tablas comunes
--- BBDD Administración -> Únicamente para gestión del servicio de los diferentes contratos
+-- BBDD Administracion -> Únicamente para gestión del servicio de los diferentes contratos
 -- BBDD Empresa0000 -> Base de datos de la aplicación en si misma
 -- =============================================================================================================
 
@@ -17,6 +17,7 @@ USE `Administracion`;
 CREATE TABLE IF NOT EXISTS `Administracion`.`Contratos` (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre_social VARCHAR(100) NOT NULL,
+    Clave_acceso VARCHAR(50) NOT NULL,
     NIF VARCHAR(9) NOT NULL,
     Email VARCHAR(50) NOT NULL,
     Telefono VARCHAR(9) NOT NULL,

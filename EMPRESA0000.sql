@@ -25,7 +25,7 @@ COMMENT="Configuraciones generales";
 
 -- DROP TABLE `Empresa0000`.`Usuarios`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Usuarios` (
-    id_user INT NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
     Apellido1 VARCHAR(50),
     Apellido2 VARCHAR(50),
@@ -36,13 +36,11 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Usuarios` (
 )
 ENGINE=InnoDB
 COMMENT="Usuario y administradores con acceso al panel de gestión";
-ALTER TABLE `Empresa0000`.`Usuarios`
-    ADD CONSTRAINT pk_id_user PRIMARY KEY (id_user);
 
 
 -- DROP TABLE `Empresa0000`.`Comunidades`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
-    id_comunidad INT NOT NULL AUTO_INCREMENT,
+    id_comunidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
     CIF VARCHAR(9),
     Clave_acceso VARCHAR(50) NOT NULL,
@@ -60,8 +58,6 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
 ENGINE=InnoDB
 COMMENT="Comunidades de vecinos";
 ALTER TABLE `Empresa0000`.`Comunidades`
-    ADD CONSTRAINT pk_id_comunidad PRIMARY KEY (id_comunidad);
-ALTER TABLE `Empresa0000`.`Comunidades`
     ADD CONSTRAINT fk_tipovia FOREIGN KEY (fk_tipovia)
     REFERENCES `Empresa0000`.`Tipovias` (id_tipovia);
 ALTER TABLE `Empresa0000`.`Comunidades`
@@ -71,7 +67,7 @@ ALTER TABLE `Empresa0000`.`Comunidades`
 
 -- DROP TABLE `Empresa0000`.`Contactos`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
-    id_contacto INT NOT NULL AUTO_INCREMENT,
+    id_contacto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
     Apellido1 VARCHAR(50),
     Apellido2 VARCHAR(50),
@@ -92,13 +88,11 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
 )
 ENGINE=InnoDB
 COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";
-ALTER TABLE `Empresa0000`.`Contactos`
-    ADD CONSTRAINT pk_id_contacto PRIMARY KEY (id_contacto);
 
 
 -- DROP TABLE `Empresa0000`.`Viviendas`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
-    id_vivienda INT NOT NULL AUTO_INCREMENT,
+    id_vivienda INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_comunidad INT NOT NULL,
     fk_propietario INT NOT NULL,
     fk_residente INT NOT NULL,
@@ -116,8 +110,6 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
 ENGINE=InnoDB
 COMMENT="Viviendas vinculadas a las comunidades";
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT pk_id_comunidad PRIMARY KEY (id_vivienda);
-ALTER TABLE `Empresa0000`.`Viviendas`
     ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
     REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
 ALTER TABLE `Empresa0000`.`Viviendas`
@@ -133,17 +125,18 @@ ALTER TABLE `Empresa0000`.`Viviendas`
 
 -- DROP TABLE `Empresa0000`.`Pagos`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Pagos` (
-    id_pago INT NOT NULL AUTO_INCREMENT,
+    id_pago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_vivienda INT NOT NULL,
-    Fecha_emision DATETIME NOT NULL,
+    Fecha_emision DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Fecha_pago DATETIME,
-    Modo_pago INT,
+    fk_modopago INT,
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
 COMMENT="Historico de pagos de todas las viviendas registradas";
 ALTER TABLE `Empresa0000`.`Pagos`
-    ADD CONSTRAINT pk_id_pago PRIMARY KEY (id_pago);
-ALTER TABLE `Empresa0000`.`Pagos`
     ADD CONSTRAINT fk_vivienda FOREIGN KEY (fk_vivienda)
     REFERENCES `Empresa0000`.`Viviendas` (id_vivienda);
+ALTER TABLE `Empresa0000`.`Pagos`
+    ADD CONSTRAINT fk_modopago FOREIGN KEY (fk_modopago)
+    REFERENCES `Empresa0000`.`Modopago` (id_modopago);

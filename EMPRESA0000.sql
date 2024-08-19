@@ -17,7 +17,7 @@ USE `Empresa0000`;
 -- DROP TABLE `Empresa0000`.`Usuarios`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Configuracion` (
     Idioma INT NOT NULL,
-    Fecha_emision_pagos DATETIME NOT NULL
+    Fecha_pagos DATETIME NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Configuraciones generales";
@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
     coord_x FLOAT,
     coord_y FLOAT,
     Cuota_defecto INT NOT NULL,
+    Fecha_pagos DATETIME NOT NULL,
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
@@ -90,29 +91,30 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
-COMMENT="";
+COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";
 ALTER TABLE `Empresa0000`.`Contactos`
     ADD CONSTRAINT pk_id_contacto PRIMARY KEY (id_contacto);
 
 
 -- DROP TABLE `Empresa0000`.`Viviendas`
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
-     id_vivienda INT NOT NULL AUTO_INCREMENT,
-     fk_comunidad INT NOT NULL,
-     fk_propietario INT NOT NULL,
-     fk_residente INT NOT NULL,
-     fk_pagador INT NOT NULL,
-     Nombre VARCHAR(50) NOT NULL,
-     Piso INT,
-     Numero INT,
-     Escalera INT,
-     Clave_acceso VARCHAR(50) NOT NULL,
-     Fecha_emision_pagos DATETIME NOT NULL,
-     Cuota INT NOT NULL,
-     Comentarios VARCHAR(500)
+    id_vivienda INT NOT NULL AUTO_INCREMENT,
+    fk_comunidad INT NOT NULL,
+    fk_propietario INT NOT NULL,
+    fk_residente INT NOT NULL,
+    fk_pagador INT NOT NULL,
+    Nombre VARCHAR(50) NOT NULL,
+    Piso INT,
+    Numero INT,
+    Escalera INT,
+    Clave_acceso VARCHAR(50) NOT NULL,
+    Fecha_emision_pagos DATETIME NOT NULL,
+    Cuota INT NOT NULL,
+    Facturacion_activa BOOL NOT NULL,
+    Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
-COMMENT="";
+COMMENT="Viviendas vinculadas a las comunidades";
 ALTER TABLE `Empresa0000`.`Viviendas`
     ADD CONSTRAINT pk_id_comunidad PRIMARY KEY (id_vivienda);
 ALTER TABLE `Empresa0000`.`Viviendas`

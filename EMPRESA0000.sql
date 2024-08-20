@@ -30,9 +30,10 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Usuarios` (
     Apellido1 VARCHAR(50),
     Apellido2 VARCHAR(50),
     Email VARCHAR(50) NOT NULL,
-    Pass VARCHAR(30) NOT NULL,
+    password VARCHAR(30) NOT NULL,
     Telefono VARCHAR(9) NOT NULL,
-    Roles VARCHAR(100) NOT NULL
+    -- Roles VARCHAR(100) NOT NULL
+    roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
 )
 ENGINE=InnoDB
 COMMENT="Usuario y administradores con acceso al panel de gestión";
@@ -74,17 +75,18 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     Nif_cif VARCHAR(9),
     Telefono1 VARCHAR(9),
     Telefono2 VARCHAR(9),
-    Email VARCHAR(50),
+    Email1 VARCHAR(50),
     Email2 VARCHAR(50),
+    fk_localidad INT,
     fk_tipovia INT,
     Dir_calle VARCHAR(100),
     Dir_numero VARCHAR(5),
     Dir_otros VARCHAR(50),
     Envio_comunicados INT NOT NULL,
-    Pass VARCHAR(30),
-    Roles VARCHAR(100) NOT NULL,
-    fk_localidad INT,
+    Password VARCHAR(30),
     Comentarios VARCHAR(500)
+    -- Roles VARCHAR(100) NOT NULL,
+    roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
 )
 ENGINE=InnoDB
 COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";

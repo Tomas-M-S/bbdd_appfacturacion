@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `Administracion`.`Tipocontratos` (
     id_tipocontrado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Tipo VARCHAR(50) NOT NULL,
     Cuota FLOAT NOT NULL,
-    comentarios TEXT
+    comentario TEXT
 )
 ENGINE=InnoDB
 COMMENT="Tabla común en la que se almacenan los datos de los clientes";
@@ -29,8 +29,9 @@ INSERT IGNORE INTO `Administracion`.`Tipocontratos` (id_tipocontrado, Tipo) VALU
 -- DROP TABLE `Administracion`.`Clientes`
 CREATE TABLE IF NOT EXISTS `Administracion`.`Clientes` (
     id_cliente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
+    Nombre VARCHAR(50) NOT NULL,
     NIF VARCHAR(9) NOT NULL,
+    fk_formasocial INT NOT NULL
     Email VARCHAR(50) NOT NULL,
     Telefono VARCHAR(9) NOT NULL,
     fk_tipovia INT NOT NULL,
@@ -40,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `Administracion`.`Clientes` (
     fk_localidad INT NOT NULL,
     fecha_alta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_cambio DATETIME DEFAULT CURRENT_TIMESTAMP,
-    fk_formasocial INT NOT NULL
 )
 ENGINE=InnoDB
 COMMENT="Tabla común en la que se almacenan los datos de los clientes";

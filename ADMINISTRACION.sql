@@ -73,8 +73,5 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Tabla común en la que se almacenan los datos de todas los contratos con acceso a la aplicación";
 ALTER TABLE `Administracion`.`Contratos`
-    ADD CONSTRAINT fk_formasocial FOREIGN KEY (fk_formasocial)
-    REFERENCES `Administracion`.`Sociedades` (id_formasocial);
-ALTER TABLE `Administracion`.`Contratos`
     ADD CONSTRAINT fk_tipocontrado FOREIGN KEY (fk_tipocontrato)
     REFERENCES `Administracion`.`Tipocontratos` (id_tipocontrato);

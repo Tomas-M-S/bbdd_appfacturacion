@@ -18,7 +18,8 @@ USE `Empresa0000`;
 -- DROP TABLE `Empresa0000`.`Usuarios`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Configuracion` (
     Idioma INT NOT NULL,
-    Fecha_pagos DATETIME NOT NULL
+    Fecha_pagos DATETIME NOT NULL,
+    pie_email TEXT
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
     coord_y FLOAT,
     Cuota_defecto INT NOT NULL,
     Fecha_pagos DATETIME NOT NULL,
-    Comentarios VARCHAR(500)
+    Comentario VARCHAR(500)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     Dir_otros VARCHAR(50),
     Envio_comunicados INT NOT NULL,
     Password VARCHAR(30),
-    Comentarios VARCHAR(500)
+    Comentario VARCHAR(500),
     -- Roles VARCHAR(100) NOT NULL,
     roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
 )
@@ -116,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
     Fecha_emision_pagos DATETIME NOT NULL,
     Cuota INT NOT NULL,
     Facturacion_activa BOOL NOT NULL,
-    Comentarios VARCHAR(500)
+    Comentario VARCHAR(500)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -143,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Pagos` (
     Fecha_emision DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Fecha_pago DATETIME,
     fk_modopago INT,
-    Comentarios VARCHAR(500)
+    Comentario VARCHAR(500)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4

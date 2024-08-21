@@ -106,7 +106,7 @@ ALTER TABLE `COMUN`.`Localidades`
 -- DROP TABLE IF EXISTS `COMUN`.`Modopago`;
 CREATE TABLE IF NOT EXISTS `COMUN`.`Modopago` (
     id_modopago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Texto INT NOT NULL,
+    Texto VARCHAR(50) NOT NULL,
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB

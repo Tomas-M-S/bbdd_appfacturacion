@@ -15,7 +15,7 @@ USE `Administracion`;
 -- =============================================================================================================
 
 
--- DROP TABLE `Administracion`.`Clientes`;
+-- DROP TABLE `Administracion`.`Tipocontratos`;
 CREATE TABLE IF NOT EXISTS `Administracion`.`Tipocontratos` (
     id_tipocontrato INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Tipo VARCHAR(50) NOT NULL,

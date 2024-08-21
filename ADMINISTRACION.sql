@@ -1,5 +1,5 @@
 -- =============================================================================================================
--- Estructura de la base de datos de la AppFacturacion                                             // 04/12/2023
+-- Estructura de la base de datos de la AppComunidades                                             // 04/12/2023
 -- =============================================================================================================
 -- MySQL / MariaDB
 -- BBDD COMUN -> Tablas comunes

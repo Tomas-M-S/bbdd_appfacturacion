@@ -1,5 +1,5 @@
 -- =============================================================================================================
--- Estructura de la base de datos de la AppFacturacion                                             // 04/12/2023
+-- Estructura de la base de datos de la AppComunidades                                             // 04/12/2023
 -- =============================================================================================================
 -- MySQL / MariaDB
 -- BBDD COMUN -> Tablas comunes
@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     Apellido1 VARCHAR(50),
     Apellido2 VARCHAR(50),
     Nif_cif VARCHAR(9),
+    fk_formasocial INT NOT NULL,
     Telefono1 VARCHAR(9),
     Telefono2 VARCHAR(9),
     Email1 VARCHAR(50),
@@ -100,6 +101,9 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";
+ALTER TABLE `Empresa0000`.`Contactos`
+    ADD CONSTRAINT fk_formasocial FOREIGN KEY (fk_formasocial)
+    REFERENCES `Empresa0000`.`Sociedades` (id_formasocial);
 
 
 -- DROP TABLE `Empresa0000`.`Viviendas`;

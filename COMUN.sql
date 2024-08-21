@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Tipovias` (
     Tipo VARCHAR(50) NOT NULL
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena los tipos de vía posibles (Calle, Avenida, Plaza, Carretera, etc.)";
 
 
@@ -29,6 +31,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`IVA` (
     Tipo_iva FLOAT NOT NULL
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena los diferentes tipos impositivos del IVA";
 
 
@@ -38,6 +42,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`IGIC` (
     Tipo_igic FLOAT NOT NULL
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena los diferentes tipos impositivos del IGIC (IVA Canario)";
 
 
@@ -48,6 +54,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Sociedades` (
     Abreviatura VARCHAR(10) NOT NULL
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena los tipos posibles de formas sociales (Sociedad Limitada, Sociedad Anonima, Persona Física, etc.)";
 
 
@@ -58,6 +66,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Autonomias` (
     Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena las comunidades autónomas (Cantabria, Andalucía, etc.)";
 
 
@@ -69,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Provincias` (
    Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena las provincias de España (Albacete, Soria, Teruel, Gerona, etc.)";
 ALTER TABLE `COMUN`.`Provincias`
     ADD CONSTRAINT fk_autonomia FOREIGN KEY (fk_autonomia)
@@ -83,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Localidades` (
     Nombre_local VARCHAR(50)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena las localidades oficialmente reconocidas extraídas del INE";
 ALTER TABLE `COMUN`.`Localidades`
     ADD CONSTRAINT fk_provincia FOREIGN KEY (fk_provincia)
@@ -96,12 +110,9 @@ CREATE TABLE IF NOT EXISTS `COMUN`.`Modopago` (
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Posibles modos de pago";
-
-
-
-
-
 
 
 

@@ -7,6 +7,7 @@
 -- BBDD Empresa0000 -> Base de datos de la aplicación en si misma
 -- =============================================================================================================
 
+-- DROP DATABASE IF EXISTS `Empresa0000`;
 CREATE DATABASE IF NOT EXISTS `Empresa0000`;
 
 -- =============================================================================================================
@@ -14,16 +15,18 @@ USE `Empresa0000`;
 -- =============================================================================================================
 
 
--- DROP TABLE `Empresa0000`.`Usuarios`
+-- DROP TABLE `Empresa0000`.`Usuarios`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Configuracion` (
     Idioma INT NOT NULL,
     Fecha_pagos DATETIME NOT NULL
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Configuraciones generales";
 
 
--- DROP TABLE `Empresa0000`.`Usuarios`
+-- DROP TABLE `Empresa0000`.`Usuarios`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Usuarios` (
     id_user INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -36,10 +39,12 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Usuarios` (
     roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Usuario y administradores con acceso al panel de gestión";
 
 
--- DROP TABLE `Empresa0000`.`Comunidades`
+-- DROP TABLE `Empresa0000`.`Comunidades`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
     id_comunidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -57,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Comunidades de vecinos";
 ALTER TABLE `Empresa0000`.`Comunidades`
     ADD CONSTRAINT fk_tipovia FOREIGN KEY (fk_tipovia)
@@ -66,7 +73,7 @@ ALTER TABLE `Empresa0000`.`Comunidades`
     REFERENCES `Empresa0000`.`Localidades` (id_localidad);
 
 
--- DROP TABLE `Empresa0000`.`Contactos`
+-- DROP TABLE `Empresa0000`.`Contactos`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     id_contacto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -89,10 +96,12 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";
 
 
--- DROP TABLE `Empresa0000`.`Viviendas`
+-- DROP TABLE `Empresa0000`.`Viviendas`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
     id_vivienda INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_comunidad INT NOT NULL,
@@ -110,6 +119,8 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Viviendas vinculadas a las comunidades";
 ALTER TABLE `Empresa0000`.`Viviendas`
     ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
@@ -125,7 +136,7 @@ ALTER TABLE `Empresa0000`.`Viviendas`
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
 
 
--- DROP TABLE `Empresa0000`.`Pagos`
+-- DROP TABLE `Empresa0000`.`Pagos`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Pagos` (
     id_pago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_vivienda INT NOT NULL,
@@ -135,6 +146,8 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Pagos` (
     Comentarios VARCHAR(500)
 )
 ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
 COMMENT="Historico de pagos de todas las viviendas registradas";
 ALTER TABLE `Empresa0000`.`Pagos`
     ADD CONSTRAINT fk_vivienda FOREIGN KEY (fk_vivienda)

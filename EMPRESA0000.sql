@@ -93,6 +93,7 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     Dir_otros VARCHAR(50),
     Envio_comunicados INT NOT NULL,
     Password VARCHAR(30),
+    Ultimo_acceso DATETIME,
     Comentario VARCHAR(500),
     -- Roles VARCHAR(100) NOT NULL,
     roles longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`))
@@ -160,3 +161,25 @@ ALTER TABLE `Empresa0000`.`Pagos`
 ALTER TABLE `Empresa0000`.`Pagos`
     ADD CONSTRAINT fk_modopago FOREIGN KEY (fk_modopago)
     REFERENCES `Empresa0000`.`Modopago` (id_modopago);
+
+
+-- DROP TABLE `Empresa0000`.`Comunicados`;
+CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunicados` (
+    id_comunicado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fk_comunidad INT NOT NULL,
+    fk_user INT NOT NULL,
+    Fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Titulo VARCHAR(500) NOT NULL,
+    Url_adjuntos VARCHAR(500),
+    Mensaje TEXT NOT NULL
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
+COMMENT="Comunicados del administrador a los vecinos adscritos a la comunidad";
+ALTER TABLE `Empresa0000`.`Comunicados`
+    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+    REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
+ALTER TABLE `Empresa0000`.`Usuarios`
+    ADD CONSTRAINT fk_user FOREIGN KEY (fk_user)
+    REFERENCES `Empresa0000`.`Usuarios` (id_user);

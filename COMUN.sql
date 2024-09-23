@@ -127,6 +127,14 @@ INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (1,"Calle");
 INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (2,"Avenida");
 INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (3,"Plaza");
 INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (4,"Rotonda");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (5,"Carretera");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (6,"Urbanización");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (7,"Partida");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (8,"Paseo");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (9,"Camino");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (10,"Pasaje");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (11,"Polígono");
+INSERT IGNORE INTO `COMUN`.`Tipovias` (id_tipovia, Tipo) VALUES (12,"Otros");
 
 
 INSERT IGNORE INTO `COMUN`.`IVA` (id_iva, Tipo_iva) VALUES (1,0.04);

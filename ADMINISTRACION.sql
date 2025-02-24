@@ -75,3 +75,19 @@ COMMENT="Tabla común en la que se almacenan los datos de todas los contratos co
 ALTER TABLE `Administracion`.`Contratos`
     ADD CONSTRAINT fk_tipocontrado FOREIGN KEY (fk_tipocontrato)
     REFERENCES `Administracion`.`Tipocontratos` (id_tipocontrato);
+
+
+-- DROP TABLE  `Administracion.Facturacion`;
+CREATE TABLE IF NOT EXISTS `Administracion.Facturacion` (
+    id_facturacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fk_idcontrato INT NOT NULL,
+    fecha_factura DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Pagada BOOLEAN NOT NULL DEFAULT false
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
+COMMENT="Tabla común en la que se almacenan los datos de todas los contratos con acceso a la aplicación";
+ALTER TABLE `Administracion`.`Facturacion`
+    ADD CONSTRAINT fk_idcontrado FOREIGN KEY (fk_idcontrato)
+    REFERENCES `Administracion`.`Contratos` (id_contrato);

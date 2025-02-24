@@ -45,35 +45,6 @@ COLLATE=utf8mb4_unicode_ci
 COMMENT="Usuario y administradores con acceso al panel de gestión";
 
 
--- DROP TABLE `Empresa0000`.`Comunidades`;
-CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
-    id_comunidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(50) NOT NULL,
-    CIF VARCHAR(9),
-    Clave_acceso VARCHAR(50) NOT NULL,
-    fk_tipovia INT NOT NULL,
-    Dir_calle VARCHAR(100) NOT NULL,
-    Dir_numero VARCHAR(5),
-    Dir_otros VARCHAR(50),
-    fk_localidad INT NOT NULL,
-    coord_x FLOAT,
-    coord_y FLOAT,
-    Cuota_defecto INT NOT NULL,
-    Fecha_pagos DATETIME NOT NULL,
-    Comentario VARCHAR(500)
-)
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8mb4
-COLLATE=utf8mb4_unicode_ci
-COMMENT="Comunidades de vecinos";
-ALTER TABLE `Empresa0000`.`Comunidades`
-    ADD CONSTRAINT fk_tipovia FOREIGN KEY (fk_tipovia)
-    REFERENCES `Empresa0000`.`Tipovias` (id_tipovia);
-ALTER TABLE `Empresa0000`.`Comunidades`
-    ADD CONSTRAINT fk_localidad FOREIGN KEY (fk_localidad)
-    REFERENCES `Empresa0000`.`Localidades` (id_localidad);
-
-
 -- DROP TABLE `Empresa0000`.`Contactos`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Contactos` (
     id_contacto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -110,7 +81,8 @@ ALTER TABLE `Empresa0000`.`Contactos`
 -- DROP TABLE `Empresa0000`.`Viviendas`;
 CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
     id_vivienda INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_comunidad INT NOT NULL,
+    --fk_comunidad INT NOT NULL,
+    fk_grupovivienda INT NOT NULL,
     fk_propietario INT NOT NULL,
     fk_residente INT NOT NULL,
     fk_pagador INT NOT NULL,
@@ -127,10 +99,13 @@ CREATE TABLE IF NOT EXISTS `Empresa0000`.`Viviendas` (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
-COMMENT="Viviendas vinculadas a las comunidades";
+COMMENT="Viviendas vinculadas a un grupo de viviendas de una comunidad";
+--ALTER TABLE `Empresa0000`.`Viviendas`
+--    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+--    REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
-    REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
+    ADD CONSTRAINT fk_grupovivienda FOREIGN KEY (fk_grupovivienda)
+    REFERENCES `Empresa0000`.`Grupoviviendas` (id_grupovivienda);
 ALTER TABLE `Empresa0000`.`Viviendas`
     ADD CONSTRAINT fk_propietario FOREIGN KEY (fk_propietario)
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
@@ -140,6 +115,50 @@ ALTER TABLE `Empresa0000`.`Viviendas`
 ALTER TABLE `Empresa0000`.`Viviendas`
     ADD CONSTRAINT fk_pagador FOREIGN KEY (fk_pagador)
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
+
+
+-- DROP TABLE `Empresa0000`.`GrupoViviendas`;
+CREATE TABLE IF NOT EXISTS `Empresa0000`.`Grupoviviendas` (
+    id_grupovivienda INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fk_comunidad INT NOT NULL,
+    Cuota_defecto INT NOT NULL,
+    Comentario VARCHAR(500)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COMMENT="Grupos de viviendas vinculadas a una comunidad. Siempre hay una por defecto";
+ALTER TABLE `Empresa0000`.`Grupoviviendas`
+    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+    REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
+
+
+-- DROP TABLE `Empresa0000`.`Comunidades`;
+CREATE TABLE IF NOT EXISTS `Empresa0000`.`Comunidades` (
+    id_comunidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    CIF VARCHAR(9),
+    Clave_acceso VARCHAR(50) NOT NULL,
+    fk_tipovia INT NOT NULL,
+    Dir_calle VARCHAR(100) NOT NULL,
+    Dir_numero VARCHAR(5),
+    Dir_otros VARCHAR(50),
+    fk_localidad INT NOT NULL,
+    coord_x FLOAT,
+    coord_y FLOAT,
+    Cuota_defecto INT NOT NULL,
+    Fecha_pagos DATETIME NOT NULL,
+    Comentario VARCHAR(500)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci
+COMMENT="Comunidades de vecinos";
+ALTER TABLE `Empresa0000`.`Comunidades`
+    ADD CONSTRAINT fk_tipovia FOREIGN KEY (fk_tipovia)
+    REFERENCES `Empresa0000`.`Tipovias` (id_tipovia);
+ALTER TABLE `Empresa0000`.`Comunidades`
+    ADD CONSTRAINT fk_localidad FOREIGN KEY (fk_localidad)
+    REFERENCES `Empresa0000`.`Localidades` (id_localidad);
 
 
 -- DROP TABLE `Empresa0000`.`Pagos`;

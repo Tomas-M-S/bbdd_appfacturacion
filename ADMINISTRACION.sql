@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `Administracion`.`Tipocontratos` (
     id_tipocontrato INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Tipo VARCHAR(50) NOT NULL,
     Cuota FLOAT NOT NULL,
-    comentario TEXT
+    Comentario TEXT
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -75,6 +75,9 @@ COMMENT="Tabla común en la que se almacenan los datos de todas los contratos co
 ALTER TABLE `Administracion`.`Contratos`
     ADD CONSTRAINT fk_tipocontrado FOREIGN KEY (fk_tipocontrato)
     REFERENCES `Administracion`.`Tipocontratos` (id_tipocontrato);
+ALTER TABLE `Administracion`.`Contratos`
+    ADD CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente)
+    REFERENCES `Administracion`.`Clientes` (id_cliente);
 
 
 -- DROP TABLE  `Administracion.Facturacion`;

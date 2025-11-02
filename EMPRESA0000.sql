@@ -74,7 +74,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Contactos asociados a las viviendas (propietario, inquilino, pagador, etc.)";
 ALTER TABLE `Empresa0000`.`Contactos`
-    ADD CONSTRAINT fk_formasocial FOREIGN KEY (fk_formasocial)
+    ADD CONSTRAINT fk_contacto_formasocial FOREIGN KEY (fk_formasocial)
     REFERENCES `Empresa0000`.`Sociedades` (id_formasocial);
 
 
@@ -100,20 +100,20 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Viviendas vinculadas a un grupo de viviendas de una comunidad";
---ALTER TABLE `Empresa0000`.`Viviendas`
---    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+-- ALTER TABLE `Empresa0000`.`Viviendas`
+--    ADD CONSTRAINT fk_vivienda_comunidad FOREIGN KEY (fk_comunidad)
 --    REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT fk_grupovivienda FOREIGN KEY (fk_grupovivienda)
+    ADD CONSTRAINT fk_vivienda_grupovivienda FOREIGN KEY (fk_grupovivienda)
     REFERENCES `Empresa0000`.`Grupoviviendas` (id_grupovivienda);
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT fk_propietario FOREIGN KEY (fk_propietario)
+    ADD CONSTRAINT fk_vivienda_propietario FOREIGN KEY (fk_propietario)
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT fk_residente FOREIGN KEY (fk_residente)
+    ADD CONSTRAINT fk_vivienda_residente FOREIGN KEY (fk_residente)
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
 ALTER TABLE `Empresa0000`.`Viviendas`
-    ADD CONSTRAINT fk_pagador FOREIGN KEY (fk_pagador)
+    ADD CONSTRAINT fk_vivienda_pagador FOREIGN KEY (fk_pagador)
     REFERENCES `Empresa0000`.`Contactos` (id_contacto);
 
 
@@ -128,7 +128,7 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COMMENT="Grupos de viviendas vinculadas a una comunidad. Siempre hay una por defecto";
 ALTER TABLE `Empresa0000`.`Grupoviviendas`
-    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+    ADD CONSTRAINT fk_grupoviviendas_comunidad FOREIGN KEY (fk_comunidad)
     REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
 
 
@@ -154,10 +154,10 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Comunidades de vecinos";
 ALTER TABLE `Empresa0000`.`Comunidades`
-    ADD CONSTRAINT fk_tipovia FOREIGN KEY (fk_tipovia)
+    ADD CONSTRAINT fk_comunidad_tipovia FOREIGN KEY (fk_tipovia)
     REFERENCES `Empresa0000`.`Tipovias` (id_tipovia);
 ALTER TABLE `Empresa0000`.`Comunidades`
-    ADD CONSTRAINT fk_localidad FOREIGN KEY (fk_localidad)
+    ADD CONSTRAINT fk_comunidad_localidad FOREIGN KEY (fk_localidad)
     REFERENCES `Empresa0000`.`Localidades` (id_localidad);
 
 
@@ -175,10 +175,10 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Historico de pagos de todas las viviendas registradas";
 ALTER TABLE `Empresa0000`.`Pagos`
-    ADD CONSTRAINT fk_vivienda FOREIGN KEY (fk_vivienda)
+    ADD CONSTRAINT fk_pago_vivienda FOREIGN KEY (fk_vivienda)
     REFERENCES `Empresa0000`.`Viviendas` (id_vivienda);
 ALTER TABLE `Empresa0000`.`Pagos`
-    ADD CONSTRAINT fk_modopago FOREIGN KEY (fk_modopago)
+    ADD CONSTRAINT fk_pago_modopago FOREIGN KEY (fk_modopago)
     REFERENCES `Empresa0000`.`Modopago` (id_modopago);
 
 
@@ -197,8 +197,8 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Comunicados del administrador a los vecinos adscritos a la comunidad";
 ALTER TABLE `Empresa0000`.`Comunicados`
-    ADD CONSTRAINT fk_comunidad FOREIGN KEY (fk_comunidad)
+    ADD CONSTRAINT fk_comunicado_comunidad FOREIGN KEY (fk_comunidad)
     REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
 ALTER TABLE `Empresa0000`.`Usuarios`
-    ADD CONSTRAINT fk_user FOREIGN KEY (fk_user)
+    ADD CONSTRAINT fk_comunicado_user FOREIGN KEY (fk_user)
     REFERENCES `Empresa0000`.`Usuarios` (id_user);

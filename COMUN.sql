@@ -84,7 +84,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena las provincias de España (Albacete, Soria, Teruel, Gerona, etc.)";
 ALTER TABLE `COMUN`.`Provincias`
-    ADD CONSTRAINT fk_autonomia FOREIGN KEY (fk_autonomia)
+    ADD CONSTRAINT fk_provincia_autonomia FOREIGN KEY (fk_autonomia)
     REFERENCES `COMUN`.`Autonomias` (id_autonomia);
 
 
@@ -100,7 +100,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Almacena las localidades oficialmente reconocidas extraídas del INE";
 ALTER TABLE `COMUN`.`Localidades`
-    ADD CONSTRAINT fk_provincia FOREIGN KEY (fk_provincia)
+    ADD CONSTRAINT fk_localidad_provincia FOREIGN KEY (fk_provincia)
     REFERENCES `COMUN`.`Provincias` (id_provincia);
 
 

@@ -50,11 +50,11 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Tabla común en la que se almacenan los datos de los clientes";
 ALTER TABLE `Administracion`.`Clientes`
-    ADD CONSTRAINT fk_localidad FOREIGN KEY (fk_localidad)
+    ADD CONSTRAINT fk_cliente_localidad FOREIGN KEY (fk_localidad)
     REFERENCES `Administracion`.`Localidades` (id_localidad);
 ALTER TABLE `Administracion`.`Clientes`
-    ADD CONSTRAINT fk_cliente FOREIGN KEY (fk_formasocial)
-    REFERENCES `Administracion`.`Clientes` (id_cliente);
+    ADD CONSTRAINT fk_cliente_sociedad FOREIGN KEY (fk_formasocial)
+    REFERENCES `Administracion`.`Sociedades` (id_formasocial);
 
 
 -- DROP TABLE `Administracion`.`Contratos`;
@@ -73,17 +73,17 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Tabla común en la que se almacenan los datos de todas los contratos con acceso a la aplicación";
 ALTER TABLE `Administracion`.`Contratos`
-    ADD CONSTRAINT fk_tipocontrado FOREIGN KEY (fk_tipocontrato)
+    ADD CONSTRAINT fk_contrato_tipocontrato FOREIGN KEY (fk_tipocontrato)
     REFERENCES `Administracion`.`Tipocontratos` (id_tipocontrato);
 ALTER TABLE `Administracion`.`Contratos`
-    ADD CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente)
+    ADD CONSTRAINT fk_contrato_cliente FOREIGN KEY (fk_cliente)
     REFERENCES `Administracion`.`Clientes` (id_cliente);
 
 
--- DROP TABLE  `Administracion.Facturacion`;
-CREATE TABLE IF NOT EXISTS `Administracion.Facturacion` (
+-- DROP TABLE  `Administracion`.`Facturacion`;
+CREATE TABLE IF NOT EXISTS `Administracion`.`Facturacion` (
     id_facturacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_idcontrato INT NOT NULL,
+    fk_contrato INT NOT NULL,
     fecha_factura DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Pagada BOOLEAN NOT NULL DEFAULT false
 )
@@ -92,5 +92,5 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
 COMMENT="Tabla común en la que se almacenan los datos de todas los contratos con acceso a la aplicación";
 ALTER TABLE `Administracion`.`Facturacion`
-    ADD CONSTRAINT fk_idcontrado FOREIGN KEY (fk_idcontrato)
+    ADD CONSTRAINT fk_facturacion_idcontrado FOREIGN KEY (fk_contrato)
     REFERENCES `Administracion`.`Contratos` (id_contrato);

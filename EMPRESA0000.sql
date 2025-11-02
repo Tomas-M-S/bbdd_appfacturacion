@@ -199,6 +199,6 @@ COMMENT="Comunicados del administrador a los vecinos adscritos a la comunidad";
 ALTER TABLE `Empresa0000`.`Comunicados`
     ADD CONSTRAINT fk_comunicado_comunidad FOREIGN KEY (fk_comunidad)
     REFERENCES `Empresa0000`.`Comunidades` (id_comunidad);
-ALTER TABLE `Empresa0000`.`Usuarios`
+ALTER TABLE `Empresa0000`.`Comunicados`
     ADD CONSTRAINT fk_comunicado_user FOREIGN KEY (fk_user)
     REFERENCES `Empresa0000`.`Usuarios` (id_user);
